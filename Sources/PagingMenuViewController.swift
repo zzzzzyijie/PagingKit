@@ -155,6 +155,9 @@ public class PagingMenuViewController: UIViewController {
             return menuView.contentInset
         }
     }
+    
+    /// manually scroll or not ( if true , only manually scroll , defalut is false
+    var isManualScroll: Bool = false
 
     /// Scrolls a specific index of the menu so that it is visible in the receiver.
     ///
@@ -328,6 +331,7 @@ extension PagingMenuViewController: PagingMenuViewDelegate {
     
     public func pagingMenuView(pagingMenuView: PagingMenuView, didSelectItemAt index: Int) {
         delegate?.menuViewController(viewController: self, didSelect: index, previousPage: menuView.focusView.selectedIndex ?? 0)
+        if isManualScroll { return }
         guard menuView.focusView.selectedIndex != index else { return }
         menuView.scroll(index: index) { [weak self] (finish) in
             guard let _self = self, finish else { return }
