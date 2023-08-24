@@ -157,7 +157,7 @@ public class PagingMenuViewController: UIViewController {
     }
     
     /// manually scroll or not ( if true , only manually scroll , defalut is false
-    var isManualScroll: Bool = false
+    public var isManualScroll: Bool = false
 
     /// Scrolls a specific index of the menu so that it is visible in the receiver.
     ///
